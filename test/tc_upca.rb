@@ -16,13 +16,12 @@ class TC_UPCA < Test::Unit::TestCase
         }
     end
 
-    def test_type
+    def test_methods
         bc = Barcode::UPCA.new("123456789012")
         assert_equal(bc.type, "UPC-A")
-    end
-
-    def test_check_digit
-        bc = Barcode::UPCA.new("123456789012")
+        assert_equal(bc.category, "1")
+        assert_equal(bc.manufacturer, "23456")
+        assert_equal(bc.product, "78901")
         assert_equal(bc.check_digit, "2")
     end
 

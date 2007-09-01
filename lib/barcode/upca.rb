@@ -17,12 +17,16 @@ class UPCA < Barcode
         return @code[0, 12]
     end
 
+    def category
+        return @code[0, 1]
+    end
+
     def manufacturer
-        return @code[0, 5]
+        return @code[1, 5]
     end
 
     def product
-        return @code[6, 7]
+        return @code[6, 5]
     end
 
     def check_digit
