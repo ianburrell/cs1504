@@ -18,16 +18,8 @@ class EAN13 < Barcode
         return "EAN-13"
     end
 
-    def country
-
-    end
-
-    def manufacturer
-
-    end
-
-    def product
-      
+    def ean
+        return @code[0, 13]
     end
 
     def check_digit

@@ -6,8 +6,7 @@ require "barcode/ean13"
 class TC_EAN13 < Test::Unit::TestCase
 
     def test_new
-        bc = Barcode::EAN13.new("1234567890123")
-        assert_equal(bc.code, "1234567890123")
+        assert(Barcode::EAN13.new("1234567890123"))
         assert_raise_message(RuntimeError, /EAN-13 must be 13 characters long/) {
             Barcode::EAN13.new("123456789012")
         }
@@ -16,13 +15,11 @@ class TC_EAN13 < Test::Unit::TestCase
         }
     end
 
-    def test_type
+    def test_accessors
         bc = Barcode::EAN13.new("1234567890123")
+        assert_equal(bc.code, "1234567890123")
+        assert_equal(bc.ean, "1234567890123")
         assert_equal(bc.type, "EAN-13")
-    end
-
-    def test_check_digit
-        bc = Barcode::EAN13.new("1234567890123")
         assert_equal(bc.check_digit, "3")
     end
 
@@ -32,6 +29,7 @@ class TC_EAN13 < Test::Unit::TestCase
     end
 
     def test_is_valid
+        assert(Barcode::EAN13.new("9780553382686").is_valid)
         assert(Barcode::EAN13.new("9781597800440").is_valid)
         assert(! Barcode::EAN13.new("9781597800441").is_valid)
     end
