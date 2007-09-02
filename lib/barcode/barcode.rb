@@ -23,6 +23,10 @@ class Barcode
       return nil
   end
 
+  def is_isbn
+      return false
+  end
+
 end
 
 end
