@@ -1,7 +1,8 @@
 #!/usr/bin/ruby -w
 
-require "cs1504"
 require "getoptlong"
+require "cs1504"
+require "barcode/cs1504code"
 
 clear = false
 debug = false
@@ -25,8 +26,9 @@ opts.each { |opt, arg|
 reader = CS1504.new(device)
 reader.debug = debug
 list = reader.get_bar_codes()
-list.each { |code|
-    $stdout.puts([ code[0], code[1], code[2].to_s ].join("|"))
+list.each { |elt|
+    code = Barcode::CS1504Code.new_from_device(elt)
+    $stdout.puts(code.to_s)
 }
 
 if ! list.empty? && clear then
