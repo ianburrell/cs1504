@@ -12,6 +12,10 @@ class Barcode
         @code = code
     end
 
+    def Barcode.new_from_input(line)
+        return new(line.chomp)
+    end
+
     def <=>(other)
         @code <=> other.code
     end
@@ -28,6 +32,10 @@ class Barcode
         return false
     end
 
+    def to_barcode
+        return self
+    end
+    
 end
 
 end
