@@ -49,6 +49,10 @@ class ISBN < Barcode
         end
     end
 
+    def is_isbn
+        return true
+    end
+
     def to_isbn
         test_valid()
         return self
