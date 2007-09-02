@@ -16,6 +16,10 @@ class CS1504Code < Barcode
         return new(code, type, Date.new(timestamp))
     end
 
+    def CS1504Code.new_from_device(array)
+        return new(array[1], array[0], array[2])
+    end
+
     def is_valid
         return to_barcode.is_valid
     end
@@ -26,6 +30,10 @@ class CS1504Code < Barcode
 
     def to_barcode
         return CS1504Factory.create(type, code)
+    end
+
+    def to_s
+        return [ type, code, timestamp.to_s ].join("|")
     end
 
 end
