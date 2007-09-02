@@ -2,6 +2,7 @@ module Barcode
 
 require "barcode/upca"
 require "barcode/isbn"
+require "barcode/upctoisbn"
 
 class UPCAplus5 < UPCA
 
@@ -14,13 +15,13 @@ class UPCAplus5 < UPCA
     end
 
     def to_isbn
-        prefix = manufacturer()
+        prefix = category() + manufacturer()
         suffix = additional()
-        publisher = manufacturer_to_publisher(prefix)
+        publisher = UPCtoISBN.manufacturer_to_publisher(prefix)
         if publisher then
-            return ISBN.new(publisher + suffix.substring(publisher.length() - 4))
+            return ISBN.new_with_check(publisher + suffix)
         else
-            throw "Unknown manufacturer: " + prefix
+            raise "Unknown manufacturer: " + prefix
         end
     end
 
