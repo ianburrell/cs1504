@@ -5,9 +5,11 @@ require "getoptlong"
 
 clear = false
 debug = false
+device = "/dev/ttyS0"
 opts = GetoptLong.new(
     [ "--clear", GetoptLong::NO_ARGUMENT ],
     [ "--debug", GetoptLong::NO_ARGUMENT ]
+    [ "--debug", GetoptLong::REQUIRED_ARGUMENT ]
 )
 opts.each { |opt, arg|
     case opt
@@ -15,10 +17,12 @@ opts.each { |opt, arg|
         clear = true
     when "--debug"
         debug = true
+    when "--device"
+        device = arg
     end
 }
 
-reader = CS1504.new("/dev/ttyS0")
+reader = CS1504.new(device)
 reader.debug = debug
 list = reader.get_bar_codes()
 list.each { |code|
