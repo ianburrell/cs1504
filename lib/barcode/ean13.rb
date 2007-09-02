@@ -51,7 +51,7 @@ class EAN13 < Barcode
 
     def to_isbn
         test_valid()
-        if is_isbn then
+        if is_isbn || @code[0,3] == '280' then
             return ISBN.new_with_check(@code[3, 9])
         else
             raise "Not bookland"
