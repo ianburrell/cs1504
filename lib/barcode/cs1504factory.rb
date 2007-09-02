@@ -8,10 +8,10 @@ require "barcode/upcaplus5"
 
 class CS1504Factory
 
-    def CS15046Factory.new_barcode(type, code)
-        barcode_class = type_to_class(@type)
-        raise "Unknown type #{@type}" unless barcode_class
-        return barcode_class.new(@code)
+    def CS1504Factory.create(type, code)
+        barcode_class = type_to_class(type)
+        raise "Unknown type #{type}" unless barcode_class
+        return barcode_class.new(code)
     end
 
     def CS1504Factory.type_to_class(type)
