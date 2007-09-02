@@ -17,7 +17,7 @@ class CS1504Code < Barcode
 
     def to_barcode
         barcode_class = CS1504Code.type_to_class(@type)
-        raise "Unknown type #{@type}" unless barcode_classs
+        raise "Unknown type #{@type}" unless barcode_class
         return barcode_class.new(@code)
     end
 
