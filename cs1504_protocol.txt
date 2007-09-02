@@ -1,0 +1,87 @@
+Symbol CS 1504 protocol
+
+serial connection
+9600 baud, 8O1
+
+transaction: command, response
+
+comannd message:
+command number
+STX (2)
+sequence of strings
+CRC
+
+response message:
+status (OK)
+STX
+fixed length data
+sequence of strings
+CRC
+
+status (error)
+
+command byte:
+interrogate          1
+clear bar codes      2
+download params      3
+special              4
+power down           5
+upload bar codes     7 
+upload params        8
+set time             9
+get time            10
+
+status byte:
+
+0   unused
+5   unsupported command
+6   OK
+7   CRC error
+8   received character error
+9   general error
+255 unused
+
+strings:
+
+num bytes (0-250)
+
+
+interrogate:
+
+null (0)
+
+response:
+protocol version
+system status (00 = system ok, 22 = low battery)
+serial number
+sw version
+null (0)
+
+
+clear bar codes:
+
+request: null (0)
+
+response: null (0)
+
+
+download params:
+
+parameter downlod strings
+null (0)
+
+parameter number byte
+parameter value bytes
+
+
+set defaults:
+
+len (1)
+default (1)
+null (0)
+
+
+power down:
+
+request: null (0)
+re
