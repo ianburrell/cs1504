@@ -3,7 +3,8 @@ module Barcode
 require "barcode/cuecatfactory"
 require "barcode/cuecatdecoder"
 
-def CueCatCode < Barcode
+class CueCatCode < Barcode
+
     attr_reader :type, :serial
 
     def initialize(code, type, serial)
@@ -12,8 +13,8 @@ def CueCatCode < Barcode
         @serial = serial
     end
 
-    def CueCatCode.new_from_input(encoded)
-        serial, type, code = CueCatDecoder.decode_line(encoded)
+    def CueCatCode.new_from_input(input)
+        serial, type, code = CueCatDecoder.decode_line(input)
         return new(code, type, serial)
     end
 
@@ -31,6 +32,10 @@ def CueCatCode < Barcode
 
     def to_barcode
         return CueCatFactory.create(@type, @code)
+    end
+
+    def to_s
+        return [ @type, @code ].join("|")
     end
 
 end

@@ -24,12 +24,11 @@ class CS1504Factory
             return UPCA
         when "UPCA+5"
             return UPCAplus5
-        default
+        else
             return nil
         end
     end
 
 end
-
 
 end

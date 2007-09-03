@@ -12,7 +12,7 @@ class CS1504Code < Barcode
     end
       
     def CS1504Code.new_from_input(line)
-        type, code, timestamp = line.split("/\|/")
+        type, code, timestamp = line.split("|")
         return new(code, type, Date.new(timestamp))
     end
 
