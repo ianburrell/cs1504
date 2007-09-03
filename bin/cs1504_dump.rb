@@ -9,8 +9,8 @@ debug = false
 device = "/dev/ttyS0"
 opts = GetoptLong.new(
     [ "--clear", GetoptLong::NO_ARGUMENT ],
-    [ "--debug", GetoptLong::NO_ARGUMENT ]
-    [ "--debug", GetoptLong::REQUIRED_ARGUMENT ]
+    [ "--debug", GetoptLong::NO_ARGUMENT ],
+    [ "--device", GetoptLong::REQUIRED_ARGUMENT ]
 )
 opts.each { |opt, arg|
     case opt
