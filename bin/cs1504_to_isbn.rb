@@ -12,7 +12,7 @@ while line = gets
         Barcode::UPCtoISBN.record(bc)
         puts bc.to_isbn.to_s
     rescue => error
-        $stderr.puts "#{type}|#{code}: #{error}"
+        $stderr.puts "#{cc.type}|#{cc.code}: #{error}"
     end
 end
 

@@ -36,6 +36,10 @@ class Barcode
         return self
     end
     
+    def length
+        return @code.length
+    end
+
 end
 
 end
