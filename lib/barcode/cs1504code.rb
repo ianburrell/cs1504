@@ -1,6 +1,7 @@
 module Barcode
 
 require "barcode/cs1504factory"
+require "date"
 
 class CS1504Code < Barcode
     attr_reader :type, :timestamp
@@ -13,7 +14,7 @@ class CS1504Code < Barcode
       
     def CS1504Code.new_from_input(line)
         type, code, timestamp = line.split("|")
-        return new(code, type, Date.new(timestamp))
+        return new(code, type, DateTime.strptime(timestamp))
     end
 
     def CS1504Code.new_from_device(array)
