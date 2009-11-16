@@ -40,8 +40,13 @@ class UPCtoISBN
     end
 
     def UPCtoISBN.record_isbn(isbn)
-        product = isbn.code[4, 5]
-        publisher = isbn.code[0, 4]
+        if isbn.length == 10 then
+            product = isbn.code[4, 5]
+            publisher = isbn.code[0, 4]
+        elsif isbn.length == 13 then
+            product = isbn.code[7, 5]
+            publisher = isbn.code[3, 4]
+        end
         @@product_to_publisher[product] = publisher
         manuf = @@product_to_manuf[product] 
         if manuf && ! @@manuf_to_pub[manuf] then

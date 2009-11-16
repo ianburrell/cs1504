@@ -51,15 +51,22 @@ class EAN13 < Barcode
 
     def to_isbn
         test_valid()
-        # Bookland and Powells internal
-        if is_isbn || @code[0,3] == '280' then
+        # Bookland
+        if is_isbn
+            return self.to_ean
+        # Powells
+        elsif @code[0, 3] == '280' then
             return ISBN.new_with_check(@code[3, 9])
         # ISBN-13
         elsif @code[0, 3] == "979" then
-            return self
+            return self.to_ean
         else
             raise "Not bookland"
         end
+    end
+
+    def to_ean
+        return EAN13.new(self.ean)
     end
 
     def is_isbn
