@@ -25,6 +25,7 @@ Licensed under [LGPL](http://www.gnu.org/licenses/lgpl.html).
 
 ## Contact
 
-http://github.com/ianburrell/cs1504/
+[http://github.com/ianburrell/cs1504/](http://github.com/ianburrell/cs1504/)
 
-mailto:ianburrell@gmail.com
+[ianburrell@gmail.com](mailto:ianburrell@gmail.com)
+
